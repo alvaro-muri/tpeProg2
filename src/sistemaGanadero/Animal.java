@@ -12,8 +12,8 @@ public class Animal extends CompGanadero{
 	public Animal(int id, int peso,int edad, String raza, String sexo, boolean capado,int terneros_paridos) {
 		this.id = id;
 		this.peso = peso;
-		this.raza = raza;
-		this.sexo = sexo;
+		this.raza = raza.toLowerCase();
+		this.sexo = sexo.toLowerCase();
 		this.capado = capado;
 		this.hijos = terneros_paridos;
 	}

@@ -53,8 +53,9 @@ public class Lugar extends CompGanadero{
 			for(CompGanadero c: componentes){
 				if(c.equals(a)){
 					componentes.remove(a);
-				}else if(((Lugar)c).contiene(a)){
-					((Lugar)c).vender(a);
+//				}else if(((Lugar)c).contiene(a)){
+				}else if(c.contiene(a)){
+					((Lugar) c).vender(a);
 				}
 			}
 		}
@@ -83,9 +84,13 @@ public class Lugar extends CompGanadero{
 	}
 //servicios
 	public double avgEdad(){
+		if(getCant() == 0)
+			return 0;
 		return getEdad()/getCant();
 	}
 	public double avgPeso(){
+		if(getCant() == 0)
+			return 0;
 		return getPeso()/getCant();
 	}
 }

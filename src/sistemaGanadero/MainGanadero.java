@@ -26,10 +26,12 @@ public class MainGanadero {
 		L2.printAnimales();
 		System.out.println();
 		
-		CondPeso conPeso=new CondPeso(90);
+		CondPeso cond1=new CondPeso(10);
+//		CondGenero cond2 = new CondGenero("macho");
 		Camion cam=new Camion(10);
-		cam.CargarCamion(conPeso, L1);
-		System.out.println("Camion: Condicion por peso: 90kg");
+//		cam.CargarCamion(new CondAnd(cond1,cond2), L1);
+		cam.CargarCamion(cond1, L1);
+		System.out.println("Camion: Condicion: 90kg y Macho");
 		cam.printAnimales();
 		
 		System.out.println("Lugar 1:");
@@ -38,15 +40,23 @@ public class MainGanadero {
 		System.out.println("Lugar 2:");
 		L2.printAnimales();
 		
-		System.out.println("************************************************");
+		System.out.println("");
 		
 
 		SisGanadero sis = new SisGanadero(new MetMinisterio());
 		
-		System.out.println(sis.calificar(v1));
-		System.out.println(sis.calificar(v2));
-		System.out.println(sis.calificar(v3));
-		System.out.println(sis.calificar(v4));
+		print(v1);
+		System.out.println("Calificacion: "+sis.calificar(v1));
+		System.out.println();
+		print(v2);
+		System.out.println("Calificacion: "+sis.calificar(v2));
+		System.out.println();
+		print(v3);
+		System.out.println("Calificacion: "+sis.calificar(v3));
+		System.out.println();
+		print(v4);
+		System.out.println("Calificacion: "+sis.calificar(v4));
+		System.out.println();
 		
 	}
 	public static void print(CompGanadero c) {
