@@ -8,8 +8,8 @@ public class MainGanadero {
 		Animal v3 = new Animal(3,36,"macho",false,0,100);
 		Animal v4 = new Animal(4,7,"hembra",true,1,200);
 		
-		CompLugar L1=new CompLugar();
-		CompLugar L2=new CompLugar();
+		Lugar L1=new Lugar();
+		Lugar L2=new Lugar();
 		
 		L2.addComp(v1);
 		L2.addComp(v2);
@@ -20,14 +20,16 @@ public class MainGanadero {
 		
 		System.out.println("Lugar 1:");
 		L1.printAnimales();
+		System.out.println();
 		
 		System.out.println("Lugar 2:");
 		L2.printAnimales();
+		System.out.println();
 		
 		CondPeso conPeso=new CondPeso(90);
 		Camion cam=new Camion(10);
 		cam.CargarCamion(conPeso, L1);
-		System.out.println("Camion:");
+		System.out.println("Camion: Condicion por peso: 90kg");
 		cam.printAnimales();
 		
 		System.out.println("Lugar 1:");
@@ -46,6 +48,9 @@ public class MainGanadero {
 		System.out.println(sis.calificar(v3));
 		System.out.println(sis.calificar(v4));
 		
+	}
+	public static void print(CompGanadero c) {
+		System.out.println(c.print());
 	}
 
 }

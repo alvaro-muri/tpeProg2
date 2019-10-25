@@ -9,6 +9,6 @@ public class CondPeso extends Condicion {
 
 	@Override
 	public boolean Cumple(Animal a) {
-		return a.GetPeso()>peso;
+		return a.getPeso()>peso;
 	}
 }

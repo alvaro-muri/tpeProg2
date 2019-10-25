@@ -11,8 +11,8 @@ public class Camion {
 		animales=new ArrayList <Animal>();
 	}
 	
-	public void CargarCamion(Condicion c,CompLugar cl){
-		ArrayList <Animal> aux=cl.GetAnimales(c);
+	public void CargarCamion(Condicion c,Lugar cl){
+		ArrayList <Animal> aux=cl.getAnimales(c);
 		int i=0;
 		while(i<capacidad && i<aux.size()){
 			animales.add(aux.get(i));

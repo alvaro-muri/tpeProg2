@@ -10,7 +10,7 @@ public class CondEdad extends Condicion {
 	
 	@Override
 	public boolean Cumple(Animal a) {
-		return a.GetEdad()>edad;
+		return a.getEdad()>edad;
 	}
 	
 	

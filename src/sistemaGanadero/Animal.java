@@ -7,7 +7,7 @@ public class Animal extends CompGanadero{
 	private String raza;
 	private String sexo;
 	private boolean capado;
-	private int terneros_paridos;
+	private int hijos;
 
 	public Animal(int id, int peso,int edad, String raza, String sexo, boolean capado,int terneros_paridos) {
 		this.id = id;
@@ -15,17 +15,7 @@ public class Animal extends CompGanadero{
 		this.raza = raza;
 		this.sexo = sexo;
 		this.capado = capado;
-		this.terneros_paridos = terneros_paridos;
-	}
-
-	public Animal() {
-		this.id = 1;
-		this.edad = 12;
-		this.peso = 650;
-		this.raza = "milka";
-		this.sexo = "hembra";
-		this.capado = true;
-		this.terneros_paridos = 3;
+		this.hijos = terneros_paridos;
 	}
 	public Animal(int i,int e, String s, boolean c, int t, int p) {
 		this.id = i;
@@ -34,29 +24,23 @@ public class Animal extends CompGanadero{
 		this.raza = "milka";
 		this.sexo = s;
 		this.capado = c;
-		this.terneros_paridos = t;
+		this.hijos = t;
 	}
-
-	public Animal(int peso){this.peso=peso;}
 	public int getId() {return id;}
 	public String getRaza() {return raza;}
 	public String getSexo() {return sexo;}
 	public boolean isCapado() {return capado;}
-	public int getTerneros_paridos() {return terneros_paridos;}
+	public int getTerneros_paridos() {return hijos;}
+	
 	@Override
-	public int GetPeso() {
-		return peso;
-	}
+	public int getPeso() {return peso;}
 	@Override
-	public int GetEdad() {
-		return edad;
-	}
+	public int getEdad() {return edad;}
 	@Override
-	public int GetCant() {
-		return 1;
-	}
+	public int getCant() {return 1;}
+	
 	@Override
-	public ArrayList<Animal> GetAnimales(Condicion c) {
+	public ArrayList<Animal> getAnimales(Condicion c) {
 		ArrayList <Animal> salida=new ArrayList <Animal>();
 		if(c.Cumple(this))
 			salida.add(this);
@@ -68,6 +52,7 @@ public class Animal extends CompGanadero{
 	}
 	@Override
 	public String print(){
-		return "ID: "+id+" |Peso: "+GetPeso();
+		return "ID: "+id+" |Peso: "+peso+" |Edad: "+edad+" |Raza: "+raza
+				+" |Sexo: "+sexo+" |Capado: "+capado+" |Hijos: "+hijos;
 	}
 }

@@ -5,7 +5,7 @@ public class MetMinisterio implements MetCali {
 	@Override
 	public String calificar(Animal a) {
 		String sal = "";
-		int edad = a.GetEdad();
+		int edad = a.getEdad();
 		String sexo = a.getSexo();
 		boolean cap = a.isCapado();
 		int hijos = a.getTerneros_paridos();
