@@ -1,6 +1,7 @@
 package sistemaGanadero;
 import java.util.ArrayList;
 public class Animal extends CompGanadero{
+	private static int cont = 0;
 	private int id;
 	private int peso;
 	private int edad;
@@ -9,22 +10,25 @@ public class Animal extends CompGanadero{
 	private boolean capado;
 	private int hijos;
 
-	public Animal(int id, int peso,int edad, String raza, String sexo, boolean capado,int terneros_paridos) {
-		this.id = id;
+	public Animal(int peso,int edad, String raza, String sexo, boolean capado,int terneros_paridos) {
 		this.peso = peso;
+		this.edad = edad;
 		this.raza = raza.toLowerCase();
 		this.sexo = sexo.toLowerCase();
 		this.capado = capado;
 		this.hijos = terneros_paridos;
+		cont++;
+		this.id = cont;
 	}
-	public Animal(int i,int e, String s, boolean c, int t, int p) {
-		this.id = i;
+	public Animal(int e, String s, String r, boolean c, int t, int p) {
 		this.edad = e;
-		this.peso = p;
-		this.raza = "milka";
 		this.sexo = s;
+		this.raza = r;
 		this.capado = c;
 		this.hijos = t;
+		this.peso = p;
+		cont++;
+		this.id = cont;
 	}
 	public int getId() {return id;}
 	public String getRaza() {return raza;}
@@ -42,7 +46,7 @@ public class Animal extends CompGanadero{
 	@Override
 	public ArrayList<Animal> getAnimales(Condicion c) {
 		ArrayList <Animal> salida=new ArrayList <Animal>();
-		if(c.Cumple(this))
+		if(aptoParaVenta(c))
 			salida.add(this);
 		return salida;
 	}
@@ -54,5 +58,9 @@ public class Animal extends CompGanadero{
 	public String print(){
 		return "ID: "+id+" |Peso: "+peso+" |Edad: "+edad+" |Raza: "+raza
 				+" |Sexo: "+sexo+" |Capado: "+capado+" |Hijos: "+hijos;
+	}
+	@Override
+	public boolean aptoParaVenta(Condicion c) {
+		return c.Cumple(this);
 	}
 }

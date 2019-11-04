@@ -41,11 +41,20 @@ public class Lugar extends CompGanadero{
 	}
 	@Override
 	public String print(){
-		return "Lugar -> Promedio Peso: "+avgPeso()+" |Promedio Edad: "+avgEdad()+" |Cantidad: "+getCant();
+		return "Lugar -> Peso total: "+getPeso()+" |Promedio Peso: "+avgPeso()+
+				" |Promedio Edad: "+avgEdad()+" |Cantidad: "+getCant();
 	}
 	@Override
 	public boolean contiene(Animal a) {
 		return this.componentes.contains(a);
+	}
+	@Override
+	public boolean aptoParaVenta(Condicion cond) {
+		for(CompGanadero c: componentes) {
+			if(!c.aptoParaVenta(cond))
+				return false;
+		}
+		return true;
 	}
 	
 	public void VenderAnimales(ArrayList<Animal> arr){
@@ -53,7 +62,6 @@ public class Lugar extends CompGanadero{
 			for(CompGanadero c: componentes){
 				if(c.equals(a)){
 					componentes.remove(a);
-//				}else if(((Lugar)c).contiene(a)){
 				}else if(c.contiene(a)){
 					((Lugar) c).vender(a);
 				}
@@ -64,17 +72,6 @@ public class Lugar extends CompGanadero{
 		if(!componentes.contains(cg))
 			componentes.add(cg);
 	}
-//	public void VenderAnimales(ArrayList<Animal> arr){
-//		for(Animal a: arr){
-//			for(CompGanadero c: componentes){
-//				if(c.equals(a)){
-//					componentes.remove(a);
-//				}else if(c.contiene(a)){
-//					this.vender(a);
-//				}
-//			}
-//		}
-//	}
 	public void vender(Animal a){
 		this.componentes.remove(a);
 	}

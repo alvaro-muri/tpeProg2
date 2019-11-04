@@ -7,4 +7,5 @@ public abstract class CompGanadero {
 	public abstract int getCant();
 	public abstract boolean contiene(Animal a);
 	public abstract String print();
+	public abstract boolean aptoParaVenta(Condicion c);
 }
