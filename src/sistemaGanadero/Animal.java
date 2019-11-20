@@ -22,8 +22,8 @@ public class Animal extends CompGanadero{
 	}
 	public Animal(int e, String s, String r, boolean c, int t, int p) {
 		this.edad = e;
-		this.sexo = s;
-		this.raza = r;
+		this.sexo = s.toLowerCase();
+		this.raza = r.toLowerCase();
 		this.capado = c;
 		this.hijos = t;
 		this.peso = p;
@@ -46,21 +46,26 @@ public class Animal extends CompGanadero{
 	@Override
 	public ArrayList<Animal> getAnimales(Condicion c) {
 		ArrayList <Animal> salida=new ArrayList <Animal>();
-		if(aptoParaVenta(c))
+		if(c.Cumple(this))
 			salida.add(this);
 		return salida;
 	}
+	public boolean equals(Animal a) {
+		return this.getId() == a.getId();
+	}
+	public boolean aptoParaVenta(Condicion c) {
+		return c.Cumple(this);
+	}
 	@Override
-	public boolean contiene(Animal a){
-		return this.equals(a);
+	public ArrayList<Animal> venderAnimal(Animal a) {
+		ArrayList <Animal> salida=new ArrayList <Animal>();
+		if(this.equals(a))
+			salida.add(this);
+		return salida;
 	}
 	@Override
 	public String print(){
 		return "ID: "+id+" |Peso: "+peso+" |Edad: "+edad+" |Raza: "+raza
 				+" |Sexo: "+sexo+" |Capado: "+capado+" |Hijos: "+hijos;
-	}
-	@Override
-	public boolean aptoParaVenta(Condicion c) {
-		return c.Cumple(this);
 	}
 }

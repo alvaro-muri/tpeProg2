@@ -5,7 +5,7 @@ public abstract class CompGanadero {
 	public abstract int getPeso();
 	public abstract int getEdad();
 	public abstract int getCant();
-	public abstract boolean contiene(Animal a);
 	public abstract String print();
-	public abstract boolean aptoParaVenta(Condicion c);
+	
+	public abstract ArrayList <Animal> venderAnimal(Animal a);
 }

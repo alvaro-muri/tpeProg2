@@ -6,6 +6,6 @@ public class CondEdad extends Condicion {
 	}
 	@Override
 	public boolean Cumple(Animal a) {
-		return a.getEdad()>edad;
+		return a.getEdad() >= edad;
 	}
 }

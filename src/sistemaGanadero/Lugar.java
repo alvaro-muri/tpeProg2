@@ -2,7 +2,6 @@ package sistemaGanadero;
 import java.util.ArrayList;
 public class Lugar extends CompGanadero{
 	private ArrayList <CompGanadero> componentes;
-	
 	public Lugar(){
 		componentes=new ArrayList <CompGanadero>();
 	}
@@ -31,11 +30,7 @@ public class Lugar extends CompGanadero{
 	public ArrayList<Animal> getAnimales(Condicion c) {
 		ArrayList <Animal> salida=new ArrayList <Animal>();
 		for(CompGanadero comp:componentes){
-			for(Animal a: comp.getAnimales(c)){
-				if(!salida.contains(a)){
-					salida.add(a);
-				}
-			}
+			salida.addAll(comp.getAnimales(c));
 		}	
 		return salida;
 	}
@@ -44,36 +39,21 @@ public class Lugar extends CompGanadero{
 		return "Lugar -> Peso total: "+getPeso()+" |Promedio Peso: "+avgPeso()+
 				" |Promedio Edad: "+avgEdad()+" |Cantidad: "+getCant();
 	}
-	@Override
-	public boolean contiene(Animal a) {
-		return this.componentes.contains(a);
+	public boolean aptoParaVenta(CondicionGrupo cond) {
+		return cond.Cumple(this);
 	}
-	@Override
-	public boolean aptoParaVenta(Condicion cond) {
-		for(CompGanadero c: componentes) {
-			if(!c.aptoParaVenta(cond))
-				return false;
+	public ArrayList<Animal> venderAnimal(Animal a) {
+		ArrayList <Animal> salida=new ArrayList <Animal>();
+		for(int i=0; i<componentes.size();i++) {
+			CompGanadero s = componentes.get(i);
+			if(s.venderAnimal(a).size() > 0)
+				componentes.remove(s);
 		}
-		return true;
-	}
-	
-	public void VenderAnimales(ArrayList<Animal> arr){
-		for(Animal a: arr){
-			for(CompGanadero c: componentes){
-				if(c.equals(a)){
-					componentes.remove(a);
-				}else if(c.contiene(a)){
-					((Lugar) c).vender(a);
-				}
-			}
-		}
+		return salida;
 	}
 	public void addComp(CompGanadero cg){
 		if(!componentes.contains(cg))
 			componentes.add(cg);
-	}
-	public void vender(Animal a){
-		this.componentes.remove(a);
 	}
 	public void printAnimales(){
 		for(CompGanadero c: componentes)

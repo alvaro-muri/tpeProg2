@@ -1,16 +1,12 @@
 package sistemaGanadero;
-
 import java.util.ArrayList;
-
 public class Camion {
 	private int capacidad;
 	private ArrayList <Animal> animales;
-	
 	public Camion(int capacidad){
 		this.capacidad=capacidad;
 		animales=new ArrayList <Animal>();
 	}
-	
 	public void CargarCamion(Condicion c,Lugar cl){
 		ArrayList <Animal> aux=cl.getAnimales(c);
 		int i=0;
@@ -18,12 +14,8 @@ public class Camion {
 			animales.add(aux.get(i));
 			i++;
 		}
-		cl.VenderAnimales(animales);
-	}
-	
-	
-	public ArrayList <Animal> GetAnimales(){
-		return animales;
+		for(Animal a:animales)
+			cl.venderAnimal(a);
 	}
 	public void printAnimales(){
 		for(Animal a: animales)
